@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umar Farooq Portfolio</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        overflow-x: hidden;
+    }
+
+    header {
+        text-align: center;
+        padding: 50px 20px;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    header img {
+        width: 150px;
+        border-radius: 50%;
+        border: 3px solid #00c6ff;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    h1 {
+        margin: 10px 0;
+        font-size: 2.5em;
+    }
+
+    section {
+        padding: 40px;
+        text-align: center;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.1);
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 15px;
+        width: 80%;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        background: rgba(0,198,255,0.2);
+    }
+
+    a {
+        color: #00c6ff;
+        text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(-20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px);}
+        50% { transform: translateY(-10px);}
+        100% { transform: translateY(0px);}
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        opacity: 0.7;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <img src="PIROFILE.jpeg" alt="Profile Picture">
+    <h1>Umar Farooq</h1>
+    <p>Python Developer | Learner | Tech Enthusiast</p>
+</header>
+
+<section>
+    <div class="card">
+        <h2>About Me</h2>
+        <p>I am passionate about Python programming, data handling, and solving real-world problems using code.</p>
+    </div>
+
+    <div class="card">
+        <h2>Contact</h2>
+        <p>📞 03270176750</p>
+        <p>📍 Pakistan</p>
+        <p>🔗 <a href="https://www.linkedin.com/in/umar-farooq-925987293" target="_blank">LinkedIn Profile</a></p>
+    </div>
+
+    <div class="card">
+        <h2>Skills</h2>
+        <p>✔ Python</p>
+        <p>✔ Pandas</p>
+        <p>✔ NumPy</p>
+        <p>✔ Problem Solving</p>
+        <p>✔ Basic Web Development</p>
+    </div>
+</section>
+
+<footer>
+    © 2026 Umar Farooq | All Rights Reserved
+</footer>
+
+</body>
+</html>
