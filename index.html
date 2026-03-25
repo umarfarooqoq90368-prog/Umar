@@ -3,110 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Umar Farooq Portfolio</title>
+<title>Umar Farooq | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        color: white;
-        overflow-x: hidden;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
 
-    header {
-        text-align: center;
-        padding: 50px 20px;
-        animation: fadeIn 2s ease-in-out;
-    }
+body{
+    background:#0f172a;
+    color:#fff;
+}
 
-    header img {
-        width: 150px;
-        border-radius: 50%;
-        border: 3px solid #00c6ff;
-        animation: float 3s ease-in-out infinite;
-    }
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 50px;
+    background:rgba(0,0,0,0.5);
+    position:sticky;
+    top:0;
+}
+nav h2{color:#38bdf8;}
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:20px;
+}
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+nav ul li a:hover{
+    color:#38bdf8;
+}
 
-    h1 {
-        margin: 10px 0;
-        font-size: 2.5em;
-    }
+/* HERO */
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:90vh;
+    flex-direction:column;
+    text-align:center;
+}
 
-    section {
-        padding: 40px;
-        text-align: center;
-    }
+.hero img{
+    width:180px;
+    border-radius:50%;
+    border:4px solid #38bdf8;
+    margin-bottom:20px;
+    animation:float 4s ease-in-out infinite;
+}
 
-    .card {
-        background: rgba(255,255,255,0.1);
-        margin: 20px auto;
-        padding: 20px;
-        border-radius: 15px;
-        width: 80%;
-        transition: 0.3s;
-    }
+.hero h1{
+    font-size:3rem;
+}
 
-    .card:hover {
-        transform: scale(1.05);
-        background: rgba(0,198,255,0.2);
-    }
+.hero span{
+    color:#38bdf8;
+}
 
-    a {
-        color: #00c6ff;
-        text-decoration: none;
-    }
+.typing{
+    border-right:2px solid #38bdf8;
+    white-space:nowrap;
+    overflow:hidden;
+    width:0;
+    animation:typing 4s steps(30,end) forwards, blink 0.7s infinite;
+}
 
-    @keyframes fadeIn {
-        from {opacity: 0; transform: translateY(-20px);}
-        to {opacity: 1; transform: translateY(0);}
-    }
+/* SECTION */
+section{
+    padding:80px 50px;
+}
 
-    @keyframes float {
-        0% { transform: translateY(0px);}
-        50% { transform: translateY(-10px);}
-        100% { transform: translateY(0px);}
-    }
+.title{
+    text-align:center;
+    margin-bottom:40px;
+}
 
-    footer {
-        text-align: center;
-        padding: 20px;
-        font-size: 14px;
-        opacity: 0.7;
-    }
+.cards{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card{
+    background:#1e293b;
+    padding:25px;
+    width:280px;
+    border-radius:15px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    background:#334155;
+}
+
+/* CONTACT */
+.contact{
+    text-align:center;
+}
+
+.contact a{
+    color:#38bdf8;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#020617;
+    margin-top:40px;
+}
+
+/* ANIMATION */
+@keyframes float{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+    100%{transform:translateY(0)}
+}
+
+@keyframes typing{
+    from{width:0}
+    to{width:260px}
+}
+
+@keyframes blink{
+    50%{border-color:transparent}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    nav{flex-direction:column; gap:10px;}
+    .hero h1{font-size:2rem;}
+}
 </style>
 </head>
+
 <body>
 
-<header>
-    <img src="PIROFILE.jpeg" alt="Profile Picture">
-    <h1>Umar Farooq</h1>
-    <p>Python Developer | Learner | Tech Enthusiast</p>
-</header>
+<!-- NAVBAR -->
+<nav>
+    <h2>Umar</h2>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
-<section>
-    <div class="card">
-        <h2>About Me</h2>
-        <p>I am passionate about Python programming, data handling, and solving real-world problems using code.</p>
-    </div>
+<!-- HERO -->
+<div class="hero">
+    <img src="PIROFILE.jpeg" alt="profile">
+    <h1>Hi, I'm <span>Umar Farooq</span></h1>
+    <p class="typing">Python Developer & Problem Solver</p>
+</div>
 
-    <div class="card">
-        <h2>Contact</h2>
-        <p>📞 03270176750</p>
-        <p>📍 Pakistan</p>
-        <p>🔗 <a href="https://www.linkedin.com/in/umar-farooq-925987293" target="_blank">LinkedIn Profile</a></p>
-    </div>
+<!-- ABOUT -->
+<section id="about">
+    <h2 class="title">About Me</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        I am a passionate Python developer focused on solving real-world problems, learning new technologies, and building efficient applications. I am continuously improving my skills in programming, data handling, and software development.
+    </p>
+</section>
 
-    <div class="card">
-        <h2>Skills</h2>
-        <p>✔ Python</p>
-        <p>✔ Pandas</p>
-        <p>✔ NumPy</p>
-        <p>✔ Problem Solving</p>
-        <p>✔ Basic Web Development</p>
+<!-- SKILLS -->
+<section id="skills">
+    <h2 class="title">Skills</h2>
+    <div class="cards">
+        <div class="card">Python</div>
+        <div class="card">Pandas</div>
+        <div class="card">NumPy</div>
+        <div class="card">Problem Solving</div>
+        <div class="card">HTML & CSS</div>
+        <div class="card">Basic JavaScript</div>
     </div>
 </section>
 
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <h2 class="title">Contact</h2>
+    <p>📞 03270176750</p>
+    <p>📍 Pakistan</p>
+    <p>🔗 <a href="https://www.linkedin.com/in/umar-farooq-925987293" target="_blank">LinkedIn Profile</a></p>
+</section>
+
 <footer>
-    © 2026 Umar Farooq | All Rights Reserved
+    © 2026 Umar Farooq | Professional Portfolio
 </footer>
 
 </body>
