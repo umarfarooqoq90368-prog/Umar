@@ -17,108 +17,92 @@
 }
 
 body{
-    background:linear-gradient(135deg,#020617,#0f172a);
-    color:white;
+    background:#0f172a;
+    color:#fff;
 }
 
-/* NAVBAR */
 nav{
     display:flex;
     justify-content:space-between;
-    padding:20px 60px;
+    padding:20px 50px;
+    background:rgba(0,0,0,0.5);
+    position:sticky;
+    top:0;
 }
 nav h2{color:#38bdf8;}
 nav ul{
     display:flex;
-    gap:20px;
     list-style:none;
+    gap:20px;
 }
-nav a{
+nav ul li a{
     color:white;
     text-decoration:none;
 }
+nav ul li a:hover{color:#38bdf8;}
 
-/* HERO */
 .hero{
-    height:90vh;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    padding:0 80px;
-}
-
-.hero-text h1{
-    font-size:3rem;
-}
-.hero-text span{
-    color:#38bdf8;
-}
-
-.hero img{
-    width:250px;
-    border-radius:20px;
-    animation:float 3s infinite;
-}
-
-/* BUTTON */
-.btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:10px 20px;
-    background:#38bdf8;
-    border-radius:8px;
-    color:black;
-    text-decoration:none;
-}
-
-/* SECTION */
-section{
-    padding:80px;
+    justify-content:center;
+    height:90vh;
+    flex-direction:column;
     text-align:center;
 }
 
+.hero img{
+    width:300px;
+    height:400px;
+    object-fit:cover;
+    border-radius:20px;
+    background:transparent;
+    box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+.hero h1{font-size:3rem;}
+.hero span{color:#38bdf8;}
+
+section{padding:80px 50px;}
+.title{text-align:center;margin-bottom:40px;}
+
 .cards{
     display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
     gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
 }
 
 .card{
-    background:rgba(255,255,255,0.05);
-    padding:20px;
-    width:250px;
+    background:#1e293b;
+    padding:25px;
+    width:280px;
     border-radius:15px;
-    backdrop-filter:blur(10px);
-    transition:0.3s;
-}
-.card:hover{
-    transform:translateY(-10px);
+    text-align:center;
 }
 
-/* CONTACT */
+.contact{
+    text-align:center;
+}
+
 .contact-item{
-    margin:15px;
+    margin:15px 0;
     font-size:18px;
 }
+
 .contact-item i{
     color:#38bdf8;
     margin-right:10px;
 }
 
-/* ANIMATION */
-@keyframes float{
-    0%{transform:translateY(0)}
-    50%{transform:translateY(-10px)}
-    100%{transform:translateY(0)}
+footer{
+    text-align:center;
+    padding:20px;
+    background:#020617;
 }
 
-/* RESPONSIVE */
 @media(max-width:768px){
-    .hero{
-        flex-direction:column;
-        text-align:center;
-    }
+    nav{flex-direction:column; gap:10px;}
+    .hero h1{font-size:2rem;}
 }
 </style>
 </head>
@@ -128,7 +112,6 @@ section{
 <nav>
     <h2>Umar</h2>
     <ul>
-        <li><a href="#">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -136,21 +119,20 @@ section{
 </nav>
 
 <div class="hero">
-    <div class="hero-text">
-        <h1>Hi, I'm <span>Umar Farooq</span></h1>
-        <p>Python Developer & Problem Solver</p>
-        <a href="#contact" class="btn">Hire Me</a>
-    </div>
-    <img src="PIROFILE.jpeg">
+    <img src="PIROFILE.jpeg" alt="profile">
+    <h1>Hi, I'm <span>Umar Farooq</span></h1>
+    <p>Python Developer</p>
 </div>
 
 <section id="about">
-    <h2>About Me</h2>
-    <p>I am a passionate Python developer who loves solving real-world problems and building smart solutions.</p>
+    <h2 class="title">About Me</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        I am a passionate Python developer focused on solving real-world problems and building efficient applications.
+    </p>
 </section>
 
 <section id="skills">
-    <h2>Skills</h2>
+    <h2 class="title">Skills</h2>
     <div class="cards">
         <div class="card">Python</div>
         <div class="card">Pandas</div>
@@ -160,8 +142,8 @@ section{
     </div>
 </section>
 
-<section id="contact">
-    <h2>Contact</h2>
+<section id="contact" class="contact">
+    <h2 class="title">Contact</h2>
 
     <div class="contact-item">
         <i class="fas fa-phone"></i> 03270176750
@@ -173,9 +155,14 @@ section{
 
     <div class="contact-item">
         <i class="fab fa-linkedin"></i>
-        <a href="https://www.linkedin.com/in/umar-farooq-925987293" target="_blank">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/umar-farooq-925987293" target="_blank" style="color:#38bdf8;">LinkedIn Profile</a>
     </div>
+
 </section>
+
+<footer>
+    © 2026 Umar Farooq
+</footer>
 
 </body>
 </html>
