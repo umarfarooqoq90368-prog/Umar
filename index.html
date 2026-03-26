@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* [All the previous CSS remains exactly the same] */
         * {
             margin: 0;
             padding: 0;
@@ -23,7 +24,6 @@
             scroll-behavior: smooth;
         }
 
-        /* animated gradient background */
         .bg-gradient {
             position: fixed;
             top: 0;
@@ -41,7 +41,6 @@
             100% { background-position: 100% 100%;}
         }
 
-        /* particle overlay */
         .particles {
             position: fixed;
             top: 0;
@@ -53,14 +52,12 @@
             pointer-events: none;
         }
 
-        /* main container */
         .container {
             max-width: 1300px;
             margin: 0 auto;
             padding: 2rem;
         }
 
-        /* navbar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -113,7 +110,6 @@
             transform: translateY(-2px);
         }
 
-        /* hero section */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -211,7 +207,6 @@
             100% { transform: translateY(0px); }
         }
 
-        /* section styling */
         section {
             margin: 6rem 0;
         }
@@ -235,7 +230,6 @@
             border-radius: 4px;
         }
 
-        /* cards */
         .skills-grid, .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -279,7 +273,6 @@
             background: rgba(108,99,255,0.1);
         }
 
-        /* contact */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -317,7 +310,6 @@
             margin-top: 3rem;
         }
 
-        /* scroll reveal animation */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -380,13 +372,15 @@
                 </div>
             </div>
             <div class="hero-avatar">
-                <!-- Replace with actual profile image if available -->
-                <img src="https://ui-avatars.com/api/?background=6c63ff&color=fff&size=280&name=Umar+Farooq&rounded=true&bold=true" alt="Umar Farooq">
+                <!-- 🔽🔽🔽 PUT YOUR IMAGE FILENAME HERE 🔽🔽🔽 -->
+                <!-- Example: if your image is named "mareimg.jpg", write src="mareimg.jpg" -->
+                <img src="your-image-name.jpg" alt="Umar Farooq">
+                <!-- 🔼🔼🔼 REPLACE "your-image-name.jpg" WITH YOUR ACTUAL IMAGE FILE NAME 🔼🔼🔼 -->
             </div>
         </div>
     </section>
 
-    <!-- About -->
+    <!-- About Section (same as before) -->
     <section id="about" class="reveal">
         <h2 class="section-title">About Me</h2>
         <div style="max-width: 800px; margin: 0 auto; text-align: center; background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 32px;">
@@ -399,7 +393,7 @@
         </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills, Experience, Projects, Contact sections remain unchanged -->
     <section id="skills" class="reveal">
         <h2 class="section-title">Technical Arsenal</h2>
         <div class="skills-grid">
@@ -412,7 +406,6 @@
         </div>
     </section>
 
-    <!-- Experience / Education (customize based on your profile) -->
     <section id="experience" class="reveal">
         <h2 class="section-title">Professional Journey</h2>
         <div class="experience-item">
@@ -432,7 +425,6 @@
         </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects" class="reveal">
         <h2 class="section-title">Featured Projects</h2>
         <div class="project-grid">
@@ -457,7 +449,6 @@
         </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="reveal">
         <h2 class="section-title">Let's Connect</h2>
         <div class="contact-form">
