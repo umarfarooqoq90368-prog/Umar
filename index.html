@@ -208,6 +208,51 @@
             max-width: 600px;
         }
 
+        /* === OPEN TO JOB BADGE === */
+        .open-to-job {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        .open-to-job::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: dotBlink 1s infinite;
+        }
+
+        .open-to-job span {
+            color: #00ff88;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes dotBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
         .greeting {
             font-size: 1.2rem;
             color: #00ffff;
@@ -281,6 +326,21 @@
             font-family: 'Rajdhani', sans-serif;
         }
 
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
         .btn-primary {
             background: linear-gradient(135deg, #00ffff, #00ff88);
             color: #000;
@@ -289,7 +349,7 @@
 
         .btn-primary:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 0 50px rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.6);
         }
 
         .btn-outline {
@@ -301,7 +361,7 @@
         .btn-outline:hover {
             background: #ff006e;
             transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
         }
 
         /* === PROFILE AVATAR === */
@@ -328,16 +388,28 @@
         .avatar-ring::before {
             content: '';
             position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
             border-radius: 50%;
             background: linear-gradient(135deg, #00ffff, #ff006e);
             z-index: -1;
-            filter: blur(20px);
-            opacity: 0.5;
+            filter: blur(30px);
+            opacity: 0.6;
             animation: ringGlow 2s ease-in-out infinite;
+        }
+
+        .avatar-ring::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border-radius: 50%;
+            border: 2px dashed rgba(0, 255, 255, 0.3);
+            animation: ringRotate 8s linear infinite reverse;
         }
 
         @keyframes ringRotate {
@@ -346,8 +418,8 @@
         }
 
         @keyframes ringGlow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
+            0%, 100% { opacity: 0.4; filter: blur(30px); }
+            50% { opacity: 0.8; filter: blur(40px); }
         }
 
         .avatar-img {
@@ -358,33 +430,44 @@
             position: relative;
             z-index: 1;
             animation: float 3s ease-in-out infinite;
-            border: 4px solid rgba(0, 255, 255, 0.3);
+            border: 4px solid rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.02); }
         }
 
         /* Floating elements around avatar */
         .float-element {
             position: absolute;
-            padding: 10px 15px;
-            background: rgba(0, 0, 0, 0.5);
+            padding: 12px 18px;
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            font-size: 0.9rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            font-size: 0.95rem;
+            font-weight: 500;
             animation: floatElement 3s ease-in-out infinite;
+            transition: all 0.3s;
         }
 
-        .float-element:nth-child(2) { top: 10%; left: -20%; animation-delay: 0.5s; }
-        .float-element:nth-child(3) { bottom: 20%; right: -15%; animation-delay: 1s; }
-        .float-element:nth-child(4) { top: 50%; left: -25%; animation-delay: 1.5s; }
+        .float-element:hover {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: #00ffff;
+            transform: scale(1.1) !important;
+        }
+
+        .float-element:nth-child(2) { top: 5%; left: -15%; animation-delay: 0.3s; }
+        .float-element:nth-child(3) { bottom: 15%; right: -10%; animation-delay: 0.8s; }
+        .float-element:nth-child(4) { top: 60%; left: -20%; animation-delay: 1.3s; }
 
         @keyframes floatElement {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            25% { transform: translateY(-10px) rotate(2deg); }
+            50% { transform: translateY(-20px) rotate(-2deg); }
+            75% { transform: translateY(-10px) rotate(3deg); }
         }
 
         /* === SECTIONS === */
@@ -965,6 +1048,9 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
+            <div class="open-to-job">
+                <span>OPEN TO WORK</span>
+            </div>
             <p class="greeting">Hello, I'm</p>
             <h1 class="hero-name">
                 <span class="first">Umar</span>
@@ -972,7 +1058,7 @@
             </h1>
             <div class="typed-text" id="typed"></div>
             <p class="hero-desc">
-                Data-driven Software Engineering student with hands-on experience in Python, Pandas, and dashboard development using Streamlit. Skilled in data cleaning, visualization, and extracting actionable insights.
+                Data-driven Software Engineering student with hands-on experience in Python, Pandas, and data visualization. Skilled in data cleaning, visualization, and extracting actionable insights.
             </p>
             <div class="btn-group">
                 <a href="#contact" class="btn btn-primary">Hire Me</a>
@@ -985,7 +1071,7 @@
             <img src="PIROFILE.png" alt="Umar Farooq" class="avatar-img">
             <div class="float-element">📊 Data Analyst</div>
             <div class="float-element">🐍 Python</div>
-            <div class="float-element">📈 Streamlit</div>
+            <div class="float-element">📈 Visualization</div>
         </div>
     </section>
 
@@ -993,7 +1079,7 @@
         <h2 class="section-title reveal"><span>About Me</span></h2>
         <div class="about-content reveal">
             <p class="about-text">
-                I am an aspiring Data Analyst currently pursuing a Bachelor's in Software Engineering at Government College University Faisalabad. I have strong hands-on experience with Python data libraries (Pandas, NumPy, Matplotlib, Seaborn) and have built interactive dashboards with Streamlit. I am passionate about turning raw data into meaningful insights and seeking an internship or entry-level opportunity in Data Analytics.
+                I am an aspiring Data Analyst currently pursuing a Bachelor's in Software Engineering at Government College University Faisalabad. I have strong hands-on experience with Python data libraries (Pandas, NumPy, Matplotlib, Seaborn) and data visualization. I am passionate about turning raw data into meaningful insights and seeking an internship or entry-level opportunity in Data Analytics.
             </p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/umar-farooq-925987293" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -1020,7 +1106,7 @@
             <div class="skill-card reveal">
                 <i class="fas fa-chart-bar"></i>
                 <h3>Visualization</h3>
-                <p>Matplotlib, Seaborn, Streamlit</p>
+                <p>Matplotlib, Seaborn, Dashboard</p>
             </div>
             <div class="skill-card reveal">
                 <i class="fas fa-tools"></i>
@@ -1044,7 +1130,7 @@
                 <div class="timeline-content">
                     <h3><i class="fas fa-certificate"></i> Data Analyst Certification</h3>
                     <p>YouTube Course (Comprehensive Data Analysis with Python)</p>
-                    <p>Covered data cleaning, visualization, and dashboard creation using Pandas, Matplotlib, and Streamlit.</p>
+                    <p>Covered data cleaning, visualization, and dashboard creation using Pandas and Matplotlib.</p>
                 </div>
             </div>
             <div class="timeline-item reveal">
@@ -1062,8 +1148,8 @@
         <div class="projects-grid">
             <div class="project-card reveal">
                 <div class="project-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>Sales Dashboard in Streamlit</h3>
-                <p>Interactive sales dashboard using Python, Pandas, and Matplotlib. Deployed with Streamlit for real-time filtering and visualization.</p>
+                <h3>Sales Dashboard</h3>
+                <p>Interactive sales dashboard using Python, Pandas, and Matplotlib for real-time filtering and visualization.</p>
                 <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="project-card reveal">
@@ -1149,7 +1235,7 @@
         setTimeout(typeWriter, 1000);
 
         // === TYPED TEXT ===
-        const roles = ["Aspiring Data Analyst", "Python & Pandas Expert", "Streamlit Developer", "Data Storyteller"];
+        const roles = ["Aspiring Data Analyst", "Python & Pandas Expert", "Data Visualizer", "Data Storyteller"];
         let roleIndex = 0, textIndex = 0, roleDeleting = false;
         const typedSpan = document.getElementById("typed");
         
