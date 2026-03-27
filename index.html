@@ -15,8 +15,51 @@
         .particles { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; opacity:0.4; pointer-events:none; }
         .container { max-width:1300px; margin:0 auto; padding:2rem; }
         nav { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding:1rem 2rem; background:rgba(10,10,42,0.7); backdrop-filter:blur(12px); border-radius:60px; margin-bottom:3rem; position:sticky; top:20px; z-index:100; box-shadow:0 8px 32px rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.1); }
-        .logo { font-size:1.8rem; font-weight:800; background:linear-gradient(135deg,#aaffff,#6c63ff); -webkit-background-clip:text; background-clip:text; color:transparent; animation:glowPulse 2s infinite; }
-        @keyframes glowPulse { 0% { text-shadow:0 0 0 rgba(108,99,255,0); } 50% { text-shadow:0 0 12px rgba(108,99,255,0.6); } 100% { text-shadow:0 0 0 rgba(108,99,255,0); } }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            display: flex;
+            gap: 2px;
+        }
+        .logo-letter {
+            display: inline-block;
+            background: linear-gradient(135deg, #aaffff, #6c63ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: letterFloat 2s ease-in-out infinite;
+            text-shadow: none;
+        }
+        .logo-letter:nth-child(1) { animation-delay: 0s; }
+        .logo-letter:nth-child(2) { animation-delay: 0.1s; }
+        .logo-letter:nth-child(3) { animation-delay: 0.2s; }
+        .logo-letter:nth-child(4) { animation-delay: 0.3s; }
+        .logo-letter:nth-child(5) { animation-delay: 0.4s; }
+        .logo-letter:nth-child(6) { animation-delay: 0.5s; }
+        .logo-letter:nth-child(7) { animation-delay: 0.6s; }
+        .logo-letter:nth-child(8) { animation-delay: 0.7s; }
+        .logo-letter:nth-child(9) { animation-delay: 0.8s; }
+        .logo-letter:nth-child(10) { animation-delay: 0.9s; }
+        .logo-letter:nth-child(11) { animation-delay: 1s; }
+        @keyframes letterFloat {
+            0%, 100% { 
+                transform: translateY(0); 
+                text-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
+            }
+            50% { 
+                transform: translateY(-8px); 
+                text-shadow: 0 0 20px rgba(108, 99, 255, 1), 0 0 40px rgba(108, 99, 255, 0.5);
+            }
+        }
+        .logo-bracket {
+            color: #ff6584;
+            font-weight: 800;
+        }
+        @keyframes glowPulse { 
+            0% { text-shadow: 0 0 0 rgba(108,99,255,0); } 
+            50% { text-shadow: 0 0 12px rgba(108,99,255,0.6); } 
+            100% { text-shadow: 0 0 0 rgba(108,99,255,0); } 
+        }
         .nav-links { display:flex; gap:2rem; list-style:none; }
         .nav-links a { color:#ddd; text-decoration:none; font-weight:500; transition:0.3s; font-size:1.1rem; }
         .nav-links a:hover { color:#6c63ff; transform:translateY(-2px); }
@@ -60,7 +103,11 @@
 
 <div class="container">
     <nav>
-        <div class="logo">Umar Farooq</div>
+        <div class="logo">
+            <span class="logo-bracket">&lt;</span>
+            <span class="logo-letter">U</span><span class="logo-letter">m</span><span class="logo-letter">a</span><span class="logo-letter">r</span><span class="logo-letter"> </span><span class="logo-letter">F</span><span class="logo-letter">a</span><span class="logo-letter">r</span><span class="logo-letter">o</span><span class="logo-letter">o</span><span class="logo-letter">q</span>
+            <span class="logo-bracket">/&gt;</span>
+        </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -292,11 +339,44 @@
         });
     });
 
-    // Contact form alert
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        alert("✨ Thanks for reaching out! (Demo portfolio — your message would be sent in a real app)");
-        e.target.reset();
+        const form = e.target;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        const formData = {
+            name: form.querySelector('input[type="text"]').value,
+            email: form.querySelector('input[type="email"]').value,
+            message: form.querySelector('textarea').value,
+            timestamp: new Date().toISOString()
+        };
+        
+        try {
+            const response = await fetch('http://localhost:3000/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                alert('✅ Message sent successfully! I will get back to you soon.');
+                form.reset();
+            } else {
+                alert('❌ Error: ' + result.message);
+            }
+        } catch (error) {
+            alert('❌ Could not connect to server. Make sure the backend is running.');
+        }
+        
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
     });
 
     // ========== DOWNLOAD CV BUTTON (downloads cv.jpg) ==========
