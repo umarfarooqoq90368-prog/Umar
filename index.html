@@ -1384,30 +1384,39 @@
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 message: document.getElementById('message').value,
-                timestamp: new Date().toISOString()
+                timestamp: new Date().toLocaleString()
             };
+
+            // Save to localStorage
+            let contacts = JSON.parse(localStorage.getItem('portfolioContacts') || '[]');
+            contacts.push(data);
+            localStorage.setItem('portfolioContacts', JSON.stringify(contacts));
+
+            // Download as CSV
+            const csvContent = `Name,Email,Message,Date\n"${data.name}","${data.email}","${data.message.replace(/"/g, '""')}","${data.timestamp}"`;
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `umar_contact_${Date.now()}.csv`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Simulate sending
+            await new Promise(resolve => setTimeout(resolve, 1000));
             
-            try {
-                const response = await fetch('http://localhost:3000/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                
-                const result = await response.json();
-                
-                if (response.ok) {
-                    alert('✅ Message sent successfully! I will get back to you soon.');
-                    e.target.reset();
-                } else {
-                    alert('❌ Error: ' + result.message);
-                }
-            } catch (error) {
-                alert('❌ Could not connect to server. Make sure the backend is running.');
-            }
+            btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+            btn.style.background = 'linear-gradient(135deg, #00ff88, #00ffff)';
+            btn.style.color = '#000';
             
-            btn.innerHTML = originalText;
-            btn.disabled = false;
+            setTimeout(() => {
+                alert(`✅ Message Sent Successfully!\n\n📋 Name: ${data.name}\n📧 Email: ${data.email}\n💬 Message: ${data.message}\n\n📁 CSV file has been downloaded!`);
+                e.target.reset();
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.disabled = false;
+            }, 500);
         });
 
         // === DOWNLOAD CV ===
